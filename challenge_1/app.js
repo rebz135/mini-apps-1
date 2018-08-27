@@ -1,8 +1,12 @@
 
-
 //BOARD SETUP
 var containerEle = document.getElementsByClassName("container");
 var counter = 0;
+var board = [
+	[null, null, null],
+	[null, null, null],
+	[null, null, null]
+	];
 
 var loadBoard = () => {
   for (let r=0; r<3; r++) {
@@ -14,10 +18,7 @@ var loadBoard = () => {
 			containerEle[0].appendChild(tileEle);
 		}	
 	}
-	counter = 0;
 }
-
-loadBoard();
 
 //GAMEPLAY COMPONENT
 var clickFunc = (event) => {
@@ -37,7 +38,6 @@ var clickFunc = (event) => {
 				}
 			}, 0)
 		counter++;
-
 	} else {
 		event.target.setAttribute("class", "tile circle");
 		event.target.style = "flex-basis: 30%; background-image: url(images/circle.png);";
@@ -57,19 +57,34 @@ var clickFunc = (event) => {
 	}
 };
 
-var tilesArr = document.getElementsByClassName("tile");
-console.log('tiles', tilesArr);
-for (var ele of tilesArr) {
-	ele.addEventListener('click', clickFunc, {once: true})
-}
-	
-//BOARD COMPONENT + WIN CHECKER
-var board = [
+//GAME RESET
+var resetBoard = function () {
+	while (containerEle[0].hasChildNodes()) {
+		containerEle[0].removeChild(containerEle[0].lastChild);
+	}
+	board = [
 	[null, null, null],
 	[null, null, null],
 	[null, null, null]
 	];
+	init();
+}
 
+//LISTENERS
+var addTileListener = () => {
+	var tilesArr = document.getElementsByClassName("tile");
+	for (var ele of tilesArr) {
+		ele.addEventListener('click', clickFunc, {once: true})
+	}
+}
+
+var addResetListener = () => {
+	var resetEle = document.getElementsByClassName("btn");
+  resetEle[0].addEventListener('click', resetBoard);
+}
+
+
+//BOARD COMPONENT + WIN CHECKER
 var winCheck = function(board) {
 	let result = null;
 	console.log('board', board);
@@ -96,9 +111,15 @@ var winCheck = function(board) {
 	return result;
 }
 
-var resetBoard = function () {
-	while (containerEle[0].hasChildNodes()) {
-		containerEle[0].removeChild(containerEle[0].lastChild);
-	}
-	loadBoard();
+//INITIALIZATION
+var init = () => {
+  loadBoard();
+  addTileListener();
+  addResetListener();
+	counter = 0;
 }
+
+init();
+
+
+
