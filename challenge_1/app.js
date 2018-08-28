@@ -14,7 +14,7 @@ var loadBoard = () => {
 			var tileEle = document.createElement("div");
 		  tileEle.setAttribute("id", `${r}${c}`);
 		  tileEle.setAttribute("class", "tile");
-			tileEle.setAttribute("style", `height: 128px; width: 128px; flex-basis: 30%; background-color: #9BC1BC;`)
+			tileEle.setAttribute("style", `height: 200px; flex-basis: auto; width: 33.3%;  background-color: #e7f4e7; `)
 			containerEle[0].appendChild(tileEle);
 		}	
 	}
@@ -24,7 +24,7 @@ var loadBoard = () => {
 var clickFunc = (event) => {
 	if (counter%2 === 0) {
 		event.target.setAttribute("class", "tile cross");
-		event.target.style = "flex-basis: 30%; background-image: url(images/cross.png);";
+		event.target.style = "height: 200px; width: 33.3%; background-image: url(images/cross.png); background-repeat: no-repeat; background-position: center; background-color: #e7f4e7";
 		setTimeout(
 			()=>{
 				board[event.target.id[0]][event.target.id[1]] = 'X';
@@ -32,27 +32,28 @@ var clickFunc = (event) => {
 					alert ("CROSS WON!");
 					resetBoard();
 				}
-				if (counter === 8) {
-					alert("TIED!");
-					resetBoard();
-				}
-			}, 0)
-		counter++;
-	} else {
-		event.target.setAttribute("class", "tile circle");
-		event.target.style = "flex-basis: 30%; background-image: url(images/circle.png);";
-		setTimeout(
-			() => {
-				board[event.target.id[0]][event.target.id[1]] = 'O';
-				if (winCheck(board) === 'O') {
-					alert ("CIRCLE WON!");
-					resetBoard();
-				}
 				if (counter === 9) {
 					alert("TIED!");
 					resetBoard();
 				}
-			}, 0)
+			}
+			, 0);
+		counter++;
+	} else {
+		event.target.setAttribute("class", "tile circle");
+		event.target.style = "height: 200px; width: 33.3%; background-image: url(images/circle.png); background-repeat: no-repeat; background-position: center; background-color: #e7f4e7";
+		board[event.target.id[0]][event.target.id[1]] = 'O';
+		setTimeout(
+		()=>{
+			if (winCheck(board) === 'O') {
+				alert ("CIRCLE WON!");
+				resetBoard();
+			}
+			if (counter === 9) {
+				alert("TIED!");
+				resetBoard();
+			}
+		}, 0);
 		counter++;
 	}
 };
@@ -87,7 +88,6 @@ var addResetListener = () => {
 //BOARD COMPONENT + WIN CHECKER
 var winCheck = function(board) {
 	let result = null;
-	console.log('board', board);
 	for (let row of board) {
 		if (row[0] !== null && row[0] === row[1] && row[1] === row[2]) {
 			result = row[0]
