@@ -1,0 +1,81 @@
+var obj = JSON.stringify({
+    "firstName": "Joshie",
+    "lastName": "Wyattson",
+    "county": "San Mateo",
+    "city": "San Mateo",
+    "role": "Broker",
+    "sales": 1000000,
+    "children": [
+    {
+      "firstName": "Beth Jr.",
+      "lastName": "Johnson",
+      "county": "San Mateo",
+      "city": "Pacifica",
+      "role": "Manager",
+      "sales": 2900000,
+      "children": [
+        {
+          "firstName": "Smitty",
+          "lastName": "Won",
+          "county": "San Mateo",
+          "city": "Redwood City",
+          "role": "Sales Person",
+          "sales": 4800000,
+          "children": []
+        },
+        {
+          "firstName": "Allen",
+          "lastName": "Price",
+          "county": "San Mateo",
+          "city": "Burlingame",
+          "role": "Sales Person",
+          "sales": 2500000,
+          "children": []
+        }
+      ]
+    },
+    {
+      "firstName": "Beth",
+      "lastName": "Johnson",
+      "county": "San Francisco",
+      "city": "San Francisco",
+      "role": "Broker/Sales Person",
+      "sales": 7500000,
+      "children": []
+    }
+  ]
+});
+
+// console.log(JSON.parse(obj))
+
+var jsonToCSV = (obj) => {
+  obj = JSON.parse(obj);
+  let fields = Object.keys(obj);
+  fields = fields.filter((ele) => {
+    if (ele !== 'children') {
+      return ele;
+    }})
+  let string = fields.join(',');
+  let userAdd = (user) => {
+    string = string.concat("\n", user.firstName, ",", user.lastName, ",", user.county, ",", user.city, ",", user.role, ",", user.sales);
+    user.children.forEach((ele) => {
+      userAdd(ele);
+    })
+  }
+  userAdd(obj);
+  return string;
+}
+
+console.log(jsonToCSV(obj))
+// Pseudocode:
+//let string = 'firstName,lastName,county,city,role,sales'
+//create userAdd function that takes in user
+  //adds value at firstname, lastname, county, city, role, sales to string then adds new line
+  //for each child, call userAdd(child)
+//call userAdd on top level user
+//return string
+
+
+
+
+

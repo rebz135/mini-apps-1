@@ -1,0 +1,34 @@
+
+App: Client-server app that generates csv reports from JSON data
+
+Features:
+-Submit JSON data to server
+-Receive CSV-formatted response
+-Display results
+
+
+Constraints:
+-All report generation logic is on server. No external libraries
+
+
+To Do:
+// -Set up boilerplate index.html code [DONE]
+// -HTML form with single text area input field for client to submit JSON data [DONE]
+// -Submit button [DONE]
+// -Link submit button to post form data to server  [DONE]
+//   -Set up event listener on click on submit button [DONE]
+    -Write logic that sends post request to server w/ data on click of submit
+// -Prevent page from reloading when submitting data with html form [DONE]
+// -Create package.json to store dependencies [DONE]
+// -Set up nodemon [DONE]
+// -Set up express to serve up index.html and related assets [DONE]
+  // -Set up server [DONE]
+  // -Parse data from post requests to server [DONE]
+  // -Flatten hierarchy [DONE]
+    // -Flatten JSON hierarchy, mapping each item to a single line of CSV report [DONE]
+    //   -Child records will always be in children
+    //   -Cannot assume JSON record has other specific properties besides children
+    //   -Any properties that exist beside children must be mapped to a column in CSV report
+  -Generate csv file
+  -Respond to client with file
+  -Display results on client index.html
