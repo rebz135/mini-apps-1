@@ -1,0 +1,63 @@
+Features:
+-Series of forms for checkout
+-Checkout button
+	-When clicked, takes user to:
+		-F1: form with name, email, password
+			-Next button -> F2
+		-F2: form with shipping address (line 1, line 2, city, state, zip code), phone
+			-Next button -> F3
+		-F3: form with credit card #, expiry date, CVV, billing zip code
+			-Next button -> confirmation page
+-Confirmation page
+	-Summarize data from F1-F3
+	-Purchase button --> homepage
+-Checkout creates a new record in database
+-Each step in checkout saves data to record (data saved when next is clicked)
+
+
+TODOs:
+	-Install and --save
+		-Express
+		-Babel
+		-React
+		-nodemon
+	-Install mySQL locally
+	-Set up babel to watch for changes, add to npm start
+	-Set up nodemon to watch for changes, add to npm start
+	-Require express in index.html
+	-Set up MySQL database
+		-Design schema
+		-Set up tables
+	-Set up server
+		-Require
+			-Express
+			-bodyparser
+		-Use
+			-client folder
+			-bodyparser
+		-Set up server to take post requests
+		-Set up server to take get requests
+	-Set up index.html
+		-Create index.html with boilerplate html
+		-Add checkout button
+		-Add F1 form
+		-Add F1 next button
+		-Add F2 form
+		-Add F2 next button
+		-Add F3 form
+		-Add F3 next button
+		-Add confirmation page div and header
+	-Create function that pulls data from database for given record
+	-Append data to confirmation page
+	-Add purchase button
+	-Set up so that when page loads all forms are hidden
+	-Set up so that forms hide/show when different buttons are clicked
+	-Add event listeners
+		-Checkout button
+		-F1 next button
+		-F2 next button
+		-F3 next button
+		-Purchase button
+
+Extra:
+	-Refactor to use MongoDB
