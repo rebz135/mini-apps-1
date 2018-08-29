@@ -1,4 +1,4 @@
-var obj = JSON.stringify({
+{
     "firstName": "Joshie",
     "lastName": "Wyattson",
     "county": "San Mateo",
@@ -44,6 +44,4 @@ var obj = JSON.stringify({
       "children": []
     }
   ]
-});
-
-console.log(obj)
+}
