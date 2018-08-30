@@ -3,7 +3,10 @@ class Container extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
+		this.changePage = this.changePage.bind(this);
+		this.state = {
+			page: 'welcome'
+		}
 	}
 
 	handleChange(event) {
@@ -14,39 +17,77 @@ class Container extends React.Component {
 		console.log(this.state)
 	}
 
-	handleSubmit(event) {
+	changePage(nextPage) {
 		//TODO
-		event.preventDefault();
-		console.log('submit clicked!')
+		this.setState({page: nextPage})
+
+		console.log('submit clicked!', nextPage)
 	}
 
 	render() {
-		return (
-			<div>
-				<h1> Checkout App </h1>
-				<div>
-					<Button text="Checkout"/>
-				</div>
-					<br/>
-				<div>
-					<Form1 handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
-					<Form2 handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
-					<Form3 handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
-				</div>
-				<br/>
-				<div className="confirmation">
-					<Confirmation />
-				</div>
-			</div>
+		if (this.state.page === 'welcome') {
+			return (
+				<Welcome changePage={this.changePage}/>
 			)
+		} 
+		if (this.state.page === 'f1') {
+			return (
+				<Form1 handleChange={this.handleChange} changePage={this.changePage}/>
+				)
+		}
+		if (this.state.page === 'f2') {
+			return (
+				<Form2 handleChange={this.handleChange} changePage={this.changePage}/>
+				)
+			
+		}
+		if (this.state.page === 'f3') {
+			return (
+				<Form3 handleChange={this.handleChange} changePage={this.changePage}/>
+				)
+		}
+		if (this.state.page === 'summary') {
+			return (
+				<Summary handleChange={this.handleChange} changePage={this.changePage} state={this.state}/>
+				)
+		}
+
+		
 	}
 }
+
+class Welcome extends React.Component {
+	constructor(props) {
+		super(props);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.state = {next: 'f1'}
+	}
+
+	handleSubmit() {
+		this.props.changePage(this.state.next);
+	}
+	
+	render() {
+		return (
+				<div> 
+					<h1> Checkout App </h1>
+					<button onClick={this.handleSubmit}> Checkout </button>
+				</div>
+			)
+	}
+};
 
 class Form1 extends React.Component {
 	constructor(props) {
 		super(props);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.state = {next: 'f2'}
 	}
-	
+
+	handleSubmit() {
+		this.props.changePage(this.state.next);
+	}
+
 	render() {
 		return (
 			<div className="form">
@@ -61,7 +102,7 @@ class Form1 extends React.Component {
 					<input type="text" name="password" onChange={this.props.handleChange}/>
 					<br/>
 				</form>
-					<button onClick={this.props.handleSubmit}>Next</button>
+					<button onClick={this.handleSubmit}>Next</button>
 			</div>
 		)
 	}
@@ -70,6 +111,12 @@ class Form1 extends React.Component {
 class Form2 extends React.Component {
 	constructor(props) {
 		super(props);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.state = {next: 'f3'}
+	}
+
+	handleSubmit() {
+		this.props.changePage(this.state.next);
 	}
 	
 	render() {
@@ -100,7 +147,7 @@ class Form2 extends React.Component {
 						<br/>
 					</div>
 				</form>
-				<button onClick={this.props.handleSubmit}>Next</button>
+				<button onClick={this.handleSubmit}>Next</button>
 			</div>
 
 		)
@@ -110,6 +157,12 @@ class Form2 extends React.Component {
 class Form3 extends React.Component {
 	constructor(props) {
 		super(props);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.state = {next: 'summary'}
+	}
+
+	handleSubmit() {
+		this.props.changePage(this.state.next);
 	}
 	
 	render() {
@@ -132,28 +185,62 @@ class Form3 extends React.Component {
 						<br/>
 					</div>
 				</form>
-				<button onClick={this.props.handleSubmit}>Next</button>
+				<button onClick={this.handleSubmit}>Next</button>
 			</div>
 		)
 	}	
 };
 
-let Button = (props) => {
-	return (
-		<button> {props.text} </button>
-		)
-}
 
-let Confirmation = (props) => {
-	return (
-		<div>
-			<h2> Confirmation </h2>
+class Summary extends React.Component {
+	constructor(props) {
+		super(props);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.state = {next: 'welcome'}
+	}
+
+	handleSubmit() {
+		this.props.changePage(this.state.next);
+	}
+	
+	render() {
+		console.log(this.props.state.name);
+		return (
 			<div>
-			Transaction Summary
+				<h2> Transaction Summary </h2>
+				<div>
+				<h3> User Info </h3>
+				Name: {this.props.state.name}
+				<br/>
+				Email: {this.props.state.email}
+				<br/>
+				Password: ******
+				<h3> Mailing Info </h3>
+				Line 1: {this.props.state.line1}
+				<br/>
+				Line 2: {this.props.state.line2}
+				<br/>
+				City: {this.props.state.city}
+				<br/>
+				State: {this.props.state.state}
+				<br/>
+				Zip Code: {this.props.state.zipcode}
+				<br/>
+				Phone Number: {this.props.state.phone}
+				<br/>
+				<h3> Payment Info </h3>
+				Credit Card #: **********
+				<br/>
+				Expiry Date: {this.props.state.expdate}
+				<br/>
+				CVV: {props.state.cvv}
+				<br/>
+				Billing Zip Code: {this.props.state.billingzip}
+				</div>
+				<button onClick={this.handleSubmit}> Confirm Purchase </button>
 			</div>
-			<Button text="Confirm Purchase"/>
-		</div>
-	)
+		)
+	}
 }
 
 
