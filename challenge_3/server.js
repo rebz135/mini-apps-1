@@ -34,20 +34,20 @@ app.post('/', (req, res) => {
 
 app.listen(3000, ()=> console.log('listening on port 3000...'))
 
-// //DATABASE SETUP
-// const mysql = require('mysql');
-// const connection = mysql.createConnection({
-//   user     : 'root',
-//   password : 'ry94883837',
-//   database : 'recordsdb'
-// });
+//DATABASE SETUP
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+  user     : 'root',
+  password : null,
+  database : 'recordsdb'
+});
 
-// connection.connect()
+connection.connect()
 
-// connection.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
-//   if (err) throw err
+connection.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
+  if (err) throw err
 
-//   console.log('The solution is: ', rows[0].solution)
-// })
+  console.log('The solution is: ', rows[0].solution)
+})
 
-// connection.end()
+connection.end()

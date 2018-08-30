@@ -1,0 +1,18 @@
+
+Features:
+-Alternate clicking to place token
+-6x7 board
+-Checks for four in a row
+
+TODOs:
+	-Set up webpack for client side [DONE]
+		-SPECIFY ENTRY AND EXIT POINT [DONE]
+		-Set up webpack html bundler ?
+	-Set up React for client side
+		-Each component in own file
+		-Configure webpack to load components into client
+	-Set up Express
+	-Set up board on index.html
+
+
+
