@@ -18,7 +18,23 @@ class Container extends React.Component {
 	}
 
 	changePage(nextPage) {
-		//TODO
+		console.log(this.state);
+		let postRequest = new Request('http://localhost:3000/')
+		let params = {
+			method: 'POST',
+      headers: {
+      	"Content-Type": "application/json",
+      },
+      body: JSON.stringify(this.state)
+		}
+
+		fetch(postRequest, params).then((data) => {
+		//TODO - DEAL WITH DATA FROM RESPONSE
+			console.log('response data', data)
+			return data;
+		});
+
+
 		this.setState({page: nextPage})
 
 		console.log('submit clicked!', nextPage)
@@ -200,6 +216,7 @@ class Summary extends React.Component {
 	}
 
 	handleSubmit() {
+		alert('Thanks for shopping with us!')
 		this.props.changePage(this.state.next);
 	}
 	
@@ -210,32 +227,32 @@ class Summary extends React.Component {
 				<h2> Transaction Summary </h2>
 				<div>
 				<h3> User Info </h3>
-				Name: {this.props.state.name}
+				Name: 
 				<br/>
-				Email: {this.props.state.email}
+				Email: 
 				<br/>
 				Password: ******
 				<h3> Mailing Info </h3>
-				Line 1: {this.props.state.line1}
+				Line 1: 
 				<br/>
-				Line 2: {this.props.state.line2}
+				Line 2: 
 				<br/>
-				City: {this.props.state.city}
+				City: 
 				<br/>
-				State: {this.props.state.state}
+				State: 
 				<br/>
-				Zip Code: {this.props.state.zipcode}
+				Zip Code: 
 				<br/>
-				Phone Number: {this.props.state.phone}
+				Phone Number: 
 				<br/>
 				<h3> Payment Info </h3>
 				Credit Card #: **********
 				<br/>
-				Expiry Date: {this.props.state.expdate}
+				Expiry Date: 
 				<br/>
-				CVV: {props.state.cvv}
+				CVV: 
 				<br/>
-				Billing Zip Code: {this.props.state.billingzip}
+				Billing Zip Code: 
 				</div>
 				<button onClick={this.handleSubmit}> Confirm Purchase </button>
 			</div>

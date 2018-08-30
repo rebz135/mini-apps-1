@@ -18,18 +18,20 @@ class Container extends React.Component {
 	}
 
 	changePage(nextPage) {
-		//TODO
 		console.log(this.state);
 		let postRequest = new Request('http://localhost:3000/');
 		let params = {
-			method: 'GET',
+			method: 'POST',
 			headers: {
-				state: this.state
+				"Content-Type": "application/json"
 			},
-			mode: 'cors'
+			body: JSON.stringify(this.state)
 		};
+
 		fetch(postRequest, params).then(data => {
+			//TODO - DEAL WITH DATA FROM RESPONSE
 			console.log('response data', data);
+			return data;
 		});
 
 		this.setState({ page: nextPage });

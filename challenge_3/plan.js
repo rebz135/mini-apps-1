@@ -27,19 +27,19 @@ TODOs:
 	-Set up MySQL database
 		-Design schema
 		-Set up tables
-	-Set up server
-		-Require
-			-Express
-			-bodyparser
-		-Use
-			-client folder
-			-bodyparser
+	// -Set up server
+	// 	-Require
+	// 		-Express
+	// 		-bodyparser
+	// 	-Use
+	// 		-client folder
+			// -bodyparser
 		-Set up server to take post requests
 		-Set up server to take get requests
 	// -Set up index.html [DONE]
 		// -Create index.html with boilerplate html [DONE]
 		// -Set up React
-		-Create form class
+		// -Create form class
 		// -Create button class [DONE]
 		// -Render
 		// 	-Add checkout button [DONE]
@@ -53,28 +53,28 @@ TODOs:
 		// -Add purchase button [DONE]
 	-Create function that pulls data from database for given record
 	-Append data to confirmation page
-	-Set up so that when page loads all forms are hidden
-	-Set up so that forms hide/show when different buttons are clicked
+	// -Set up so that when page loads all forms are hidden [DONE]
+	// -Set up so that forms hide/show when different buttons are clicked [DONE]
 	-Add event listeners
 		-Checkout button
 			-On click
-				-Render F1
+				// -Render F1 [DONE]
 				-Submit data to database
 		-F1 next button
 			-On click
-				-Render F2
+				// -Render F2 [DONE]
 				-Submit data to database
 		-F2 next button
 			-On click
-				-Render F3
+				// -Render F3 [DONE]
 				-Submit data to database
 		-F3 next button
 			-On click
-				-Render confirmation page
+				// -Render confirmation page [DONE]
 				-Submit data to database
-		-Purchase button
-			-On click
-				-Render homepage
+		// -Purchase button
+		// 	-On click [DONE]
+		// 		-Render homepage [DONE]
 
 
 
