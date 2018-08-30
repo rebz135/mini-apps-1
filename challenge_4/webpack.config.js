@@ -1,13 +1,13 @@
 module.exports = {
-  entry: __dirname + '/client/src/index.jsx',
+  entry: __dirname + '/client/src/index.js',
   module: {
     rules: [
       { 
-        test: [/\.jsx$/],
+        test: [/\.js$/, /\.jsx$/],
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['env', 'react'],
+          presets: ['@babel/preset-env', '@babel/preset-react'],
         }
       }
     ]

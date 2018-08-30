@@ -5,14 +5,20 @@ Features:
 -Checks for four in a row
 
 TODOs:
-	-Set up webpack for client side [DONE]
-		-SPECIFY ENTRY AND EXIT POINT [DONE]
+	// -Set up webpack for client side [DONE]
+	// 	-SPECIFY ENTRY AND EXIT POINT [DONE]
 		-Set up webpack html bundler ?
 	-Set up React for client side
 		-Each component in own file
+			-Container
+				-Functions?
+			-Presentational
+				-App
+				-Token
 		-Configure webpack to load components into client
-	-Set up Express
+	-Set up Express 
 	-Set up board on index.html
+
 
 
 
