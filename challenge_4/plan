@@ -7,17 +7,23 @@ Features:
 TODOs:
 	// -Set up webpack for client side [DONE]
 	// 	-SPECIFY ENTRY AND EXIT POINT [DONE]
-		-Set up webpack html bundler ?
-	-Set up React for client side
-		-Each component in own file
-			-Container
-				-Functions?
-			-Presentational
-				-App
-				-Token
-		-Configure webpack to load components into client
-	-Set up Express 
-	-Set up board on index.html
+		// -Set up webpack html bundler ?
+	// -Set up React for client side
+		// -Each component in own file
+		// 	-Container
+		// 		-Functions?
+		// 	-Presentational
+		// 		-App
+		// 		-Token
+		// -Configure webpack to load components into client
+	// -Set up Express 
+	// -Set up board on index.html
+	-Write game logic
+	-Add on click handler
+		-Check win/tie
+		-Check if taken
+		-If ok, change css of appropriate token
+	-Add reset feature
 
 
 

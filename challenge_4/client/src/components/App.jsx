@@ -14,11 +14,7 @@ class App extends React.Component {
 				<h1>Connect Four</h1>
 				<Board />
 			</div>
-
-
-
-
-			)
+		)
 	}
 }
 
