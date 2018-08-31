@@ -1,0 +1,41 @@
+body {
+	background-color: #6699CC
+}
+
+h1 {
+	font-family: Arial;
+	text-align: center
+}
+
+table {
+	display: flex;
+	justify-content: center
+}
+
+.grey {
+	background-color: #E8F2ED
+}
+
+.red {
+	background-color: #FF3C38
+}
+
+.yellow {
+	background-color: #FFF275
+}
+
+.cell {
+	border-radius: 50%;
+	height: 60px;
+	width: 60px;
+}
+
+
+
+
+	/*
+	grey: #E8F2ED
+	yellow: #FFF275
+	red: #FF3C38
+	blue: #6699CC
+	*/
